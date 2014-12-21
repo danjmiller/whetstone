@@ -12,10 +12,11 @@ public:
    LinkedList();
    ~LinkedList();
 
-   bool push(int n);
-   int pop();
-
+   void push_front(int n);
+   void pop();
    int size() const;
+   int front() const;
+
 private:
    Node* m_head;
    int m_size;

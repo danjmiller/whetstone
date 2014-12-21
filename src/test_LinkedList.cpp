@@ -9,9 +9,9 @@ TEST(LinkedList, Push)
     
     ASSERT_TRUE(l != NULL);
 
-    l->push(1);
+    l->push_front(1);
     ASSERT_EQ(1, l->size());
-    l->push(2);
+    l->push_front(2);
     ASSERT_EQ(2, l->size());
 
 }
@@ -22,14 +22,16 @@ TEST(LinkedList, Pop)
 
     LinkedList* l = new LinkedList();
     
-    l->push(99);
-    l->push(88);
+    l->push_front(99);
+    l->push_front(88);
 
-    int val = l->pop();
-    ASSERT_EQ(1, l->size());
+    int val = l->front();
     ASSERT_EQ(88, val);
-    val = l->pop();
-    ASSERT_EQ(0, l->size());
-    ASSERT_EQ(99, val);
+    l->pop();
+    val = l->front();
+    ASSERT_EQ(99, val); 
+    ASSERT_EQ(1, l->size());
 
+    l->pop();
+    ASSERT_EQ(0, l->size());
 }
