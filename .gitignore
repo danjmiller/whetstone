@@ -34,3 +34,9 @@
 #Astyle backups
 *.orig
 
+#CMake Stuff
+*/CMakeFiles/*
+CMakeCache.txt
+
+#Out of Tree Builds
+/build/*
