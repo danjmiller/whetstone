@@ -1,3 +1,5 @@
+#include <vector>
+
 struct  Node
 {
     Node* next;
@@ -12,13 +14,22 @@ public:
    LinkedList();
    ~LinkedList();
 
-   void push_front(int n);
-   void pop();
-   int size() const;
-   int front() const;
+   void insertBeginning(Node* newNode);
+   void insertEnd(Node* newNode);
 
-private:
+   void insertBefore(Node* n, Node* newNode);
+   void insertAfter(Node* n, Node* newNode);
+
+   void remove(Node* n);
+   Node* find(Node* n);
+
+   int size() const;
+
+   std::vector<Node*> dumpList();
+
+private:    
    Node* m_head;
+   Node* m_tail;
    int m_size;
     
 };
