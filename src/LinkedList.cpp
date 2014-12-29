@@ -18,7 +18,7 @@ LinkedList::~LinkedList()
 
 void LinkedList::insertBeginning(Node* newNode)
 {
-    
+
     if(m_head == NULL) //empty list
     {
         m_head = newNode;
@@ -70,7 +70,7 @@ void LinkedList::insertEnd(Node* newNode)
         std::cout << "Node already in list, Skipping" << std::endl;
     }
 
-    return;   
+    return;
 }
 
 void LinkedList::insertBefore(Node *n, Node* newNode)
@@ -118,7 +118,7 @@ void LinkedList::insertAfter(Node *n, Node* newNode)
     return;
 }
 
-int LinkedList::size() const 
+int LinkedList::size() const
 {
     return m_size;
 }
@@ -132,7 +132,7 @@ Node* LinkedList::find(Node* n)
     }
 
     Node* current = m_head;
-   
+
     while(current != NULL)
     {
         if( n == current )
@@ -153,10 +153,10 @@ void LinkedList::remove(Node* n)
     {
         return;
     }
-    
+
     Node* tmp_next = n->next;
     Node* tmp_prev = n->prev;
-    
+
     if(tmp_prev == NULL && tmp_next == NULL) //Last node in a 1 node list
     {
         m_head = NULL;
@@ -189,20 +189,20 @@ void LinkedList::remove(Node* n)
 std::vector<Node*> LinkedList::dumpList()
 {
     std::vector<Node*> vec;
-    
+
     if( m_size == 0 || m_head == NULL)
     {
         return vec;
     }
 
     Node* current = m_head;
-   
+
     while(current != NULL)
     {
         vec.push_back(current);
         current = current->next;
     }
-    
+
     return vec;
 }
 

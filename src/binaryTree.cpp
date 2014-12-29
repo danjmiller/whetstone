@@ -52,7 +52,7 @@ insert(int value)
                 current->right = nNode;
                 return;
             }
-            else 
+            else
             {
                 current = current->right;
             }
@@ -64,71 +64,72 @@ insert(int value)
                 current->left = nNode;
                 return;
             }
-            else 
+            else
             {
                 current = current->left;
             }
         }
-        
-   
+
+
     }
 }
 
 
-void BinaryTree:remove(int value)
+void BinaryTree:
+remove(int value)
 {
     if (head == NULL)
     {
         return;
     }
-    
-    
+
+
     Node* current = head;
     while (true)
     {
 
         if ( current->value == value)
         {
-            
+
         }
 
 
-    /*if(head == NULL)
-    {
-        return;
-    }
-    if(head->value == value)
-    {
-        return;
-    }
-    else if (head->value > value)
-    {
-        if(head->left == NULL)
+        /*if(head == NULL)
         {
             return;
         }
-        else
-        {
-            pop(value, head->left);
-        }
-    }
-    else if (head->value <= value)
-    {
-        if(head->right == NULL)
+        if(head->value == value)
         {
             return;
         }
-        else
+        else if (head->value > value)
         {
-            pop(value, head->right);
+            if(head->left == NULL)
+            {
+                return;
+            }
+            else
+            {
+                pop(value, head->left);
+            }
         }
+        else if (head->value <= value)
+        {
+            if(head->right == NULL)
+            {
+                return;
+            }
+            else
+            {
+                pop(value, head->right);
+            }
+        }
+        */
     }
-    */
-}
 
 
-int main(int argc, const char* argv[])
-{
+    int main(int argc, const char* argv[])
+    {
 
-    return 0;
-}
+        return 0;
+    }
