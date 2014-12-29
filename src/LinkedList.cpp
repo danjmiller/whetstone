@@ -87,6 +87,7 @@ void LinkedList::insertBefore(Node *n, Node* newNode)
 
     Node* tmp = n->prev;
     n->prev = newNode;
+    tmp->next = newNode;
     newNode->prev = tmp;
     newNode->next = n;
     m_size++;
