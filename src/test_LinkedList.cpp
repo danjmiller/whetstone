@@ -160,7 +160,6 @@ TEST(LinkedList, InsertBefore)
     //Should now have [1,2,99,88,3,4]
     ASSERT_EQ(6,l->size());
     dump = l->dumpList();
-    printList(dump);
     ASSERT_EQ(88,dump[3]->value);
     ASSERT_EQ(99,dump[2]->value);
     ASSERT_EQ(3,dump[4]->value);
@@ -173,7 +172,38 @@ TEST(LinkedList, InsertBefore)
     //Should now have [1,2,99,88,3,77,4]
     ASSERT_EQ(7,l->size());
     dump = l->dumpList();
-    printList(dump);
     ASSERT_EQ(77,dump[5]->value);
 }
 
+TEST(LinkedList, Remove)
+{
+    LinkedList* l = new LinkedList();
+
+    Node* a = new Node();
+    a->value = 1;
+    Node* b = new Node();
+    b->value = 2;
+    Node* c = new Node();
+    c->value = 3;
+
+    l->insertEnd(a);
+    l->insertEnd(b);
+    l->insertEnd(c);
+
+    l->remove(b);
+    vector<Node*> dump = l->dumpList();
+    ASSERT_EQ(2,l->size());
+    ASSERT_EQ(1,dump[0]->value);
+
+    l->remove(a);
+    ASSERT_EQ(1,l->size());
+    dump = l->dumpList();
+    ASSERT_EQ(3,dump[0]->value);
+    ASSERT_EQ(NULL,dump[0]->next);
+    ASSERT_EQ(NULL,dump[0]->prev);
+
+    l->remove(c);
+    ASSERT_EQ(0,l->size());
+ 
+
+}

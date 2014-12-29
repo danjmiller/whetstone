@@ -146,6 +146,46 @@ Node* LinkedList::find(Node* n)
     return NULL;
 }
 
+void LinkedList::remove(Node* n)
+{
+
+    if(n == NULL)
+    {
+        return;
+    }
+    
+    Node* tmp_next = n->next;
+    Node* tmp_prev = n->prev;
+    
+    if(tmp_prev == NULL && tmp_next == NULL) //Last node in a 1 node list
+    {
+        m_head = NULL;
+        m_tail = NULL;
+        m_size = 0;
+    }
+    else if(tmp_prev == NULL && tmp_next != NULL) //Removing the Head
+    {
+        tmp_next->prev = NULL;
+        m_head = tmp_next;
+        m_size--;
+    }
+    else if(tmp_next == NULL && tmp_prev != NULL) //Removing the Tail
+    {
+        tmp_prev->next = NULL;
+        m_tail = tmp_prev;
+        m_size--;
+    }
+    else
+    {
+        tmp_prev->next = tmp_next;
+        tmp_next->prev = tmp_prev;
+        m_size--;
+    }
+
+    return;
+}
+
+
 std::vector<Node*> LinkedList::dumpList()
 {
     std::vector<Node*> vec;
