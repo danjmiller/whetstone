@@ -175,15 +175,22 @@ bool BinaryTree::insert(int value)
     if (root == NULL)
     {
         root = new Node(value);
+        size = 1;
         return true;
     }
     else 
     {
-        return root->add(value);
+        if( root->add(value))
+        {
+            size++;
+            cout << "Added Node: " << value << endl;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-
-
-
 }
 
 Node* BinaryTree::findMin(Node* n)
@@ -197,8 +204,6 @@ Node* BinaryTree::findMin(Node* n)
         return findMin(n->left);
     }
 
-    
-  
     cout << "WARNING: Unexpected Behavior" << endl;
     return NULL;
 }
@@ -222,6 +227,7 @@ bool BinaryTree::remove(int val)
             if(removed != NULL)
             {
                 delete removed;
+                size--;
                 return true;
             }
             else
@@ -236,6 +242,7 @@ bool BinaryTree::remove(int val)
             if(removed != NULL)
             {
                 delete removed;
+                size--;
                 return true;
             }
             else

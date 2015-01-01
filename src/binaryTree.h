@@ -25,17 +25,18 @@ class BinaryTree
 public:
     BinaryTree();
     BinaryTree(Node* head);
-    ~BinaryTree();
 
     bool insert(int value);
     bool find(int value);
     bool remove(int value);
 
     Node* findMin(Node* n);
-
+    
+    int size;
 
 private:
     Node* root;
+
 
 };
 
