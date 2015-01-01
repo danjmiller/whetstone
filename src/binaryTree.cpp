@@ -1,135 +1,247 @@
 #include <cstddef>
 #include <stdio.h>
+#include <iostream>
 #include "binaryTree.h"
 
 
+using namespace std;
 
 
-BinaryTree:
-BinaryTree() : head(NULL)
+Node::Node(int val) : value(val), left(NULL), right(NULL)
 {
 
 }
 
-
-BinaryTree:
-BinaryTree(Node* h) : head(h)
+bool Node::add(int val)
 {
-
-}
-
-
-void BinaryTree:
-insert(int value)
-{
-    if (head == NULL)
+    if (val == value)
     {
-        head = new Node();
-        head->value = value;
-        head->left = NULL;
-        head->right = NULL;
-        return;
+        //Unique elements only
+        return false;
+    }
+    else if(val < value)
+    {
+        if (left == NULL)
+        {
+            left = new Node(val);
+            return true;
+        }
+        else
+        {
+            return left->add(val);
+        }
+    }
+    else if (val > value)
+    {
+        if (right == NULL)
+        {
+            right = new Node(val);
+            return true;
+        }
+        else
+        {
+            return right->add(value);
+        }
+    }
+    
+    //Should never happen
+    return false;
+}
+
+bool Node::find(int val)
+{
+    if ( val == value)
+    {
+        return true;
+    }
+    else if(val < value)
+    {
+        if(left == NULL)
+        {
+            return false;
+        }
+        else
+        {
+            return left->find(val);
+        }
+    }
+    else if(val > value)
+    {
+        if (right == NULL)
+        {
+            return false;
+        }
+        else
+        {
+            return right->find(val);
+        }
     }
 
-    Node* current = head;
+    return false;
+}
 
-    while(true)
+
+Node* Node::remove(int val, Node* parent)
+{
+    if (val < value)
     {
-        if(current->value == value)
+        if(left != NULL)
         {
-            return;
+            return left->remove(value, this);
         }
-
-        nNode = new Node();
-        nNode->value = value;
-        nNode->right = NULL;
-        nNode->left = NULL;
-
-        if (current->value < value)
+        else
         {
-            if (current->right == NULL)
+            return NULL;
+        }
+    }
+    else if (val > value)
+    {
+        if (right != NULL)
+        {
+            return right->remove(value,this);
+        }
+        else
+        {
+            return NULL;
+        }
+    }
+    else
+    {
+        if (left != NULL && right != NULL)
+        {
+            value = right->minValue();
+            return right->remove(value, this);
+        }
+        else if( parent->left == NULL)
+        {
+            parent->left = (left != NULL) ? left : right;
+            return this;
+        }
+        else if(parent->right == this)
+        {
+            parent->right = (left != NULL) ? left : right;
+            return this;
+        }
+    }
+
+
+
+}
+
+int Node::minValue()
+{
+    if (left == NULL)
+    {
+        return value;
+    }
+    else
+    {
+        return left->minValue();
+    }
+}
+
+
+BinaryTree::BinaryTree() : root(NULL)
+{
+
+}
+
+
+BinaryTree::BinaryTree(Node* h) : root(h)
+{
+
+}
+
+
+bool BinaryTree:: find(int val)
+{
+    if(root == NULL)
+    {
+        return false;
+    }
+    else
+    {
+        return root->find(val);
+    }
+}
+
+
+
+
+
+bool BinaryTree::insert(int value)
+{
+  
+    if (root == NULL)
+    {
+        root = new Node(value);
+        return true;
+    }
+    else 
+    {
+        return root->add(value);
+    }
+
+
+
+}
+
+Node* BinaryTree::findMin(Node* n)
+{
+    if(n->left == NULL)
+    {    
+        return NULL;
+    }
+    else
+    {
+        return findMin(n->left);
+    }
+
+    
+  
+    cout << "WARNING: Unexpected Behavior" << endl;
+    return NULL;
+}
+
+
+bool BinaryTree::remove(int val)
+{
+    if ( root == NULL)
+    {
+        return false;
+    }
+    else 
+    {
+        if ( root->value == val)
+        {
+            Node* tmpRoot = new Node(0);
+            tmpRoot->left = root;
+            Node* removed = root->remove(val, tmpRoot);
+            root = tmpRoot->left;
+            
+            if(removed != NULL)
             {
-                current->right = nNode;
-                return;
+                delete removed;
+                return true;
             }
             else
             {
-                current = current->right;
+                return false;
             }
         }
         else
         {
-            if (current->left == NULL)
+            Node* removed = root->remove(val, NULL);
+            
+            if(removed != NULL)
             {
-                current->left = nNode;
-                return;
+                delete removed;
+                return true;
             }
             else
             {
-                current = current->left;
+                return false;
             }
         }
-
-
     }
 }
-
-
-void BinaryTree:
-remove(int value)
-{
-    if (head == NULL)
-    {
-        return;
-    }
-
-
-    Node* current = head;
-    while (true)
-    {
-
-        if ( current->value == value)
-        {
-
-        }
-
-
-        /*if(head == NULL)
-        {
-            return;
-        }
-        if(head->value == value)
-        {
-            return;
-        }
-        else if (head->value > value)
-        {
-            if(head->left == NULL)
-            {
-                return;
-            }
-            else
-            {
-                pop(value, head->left);
-            }
-        }
-        else if (head->value <= value)
-        {
-            if(head->right == NULL)
-            {
-                return;
-            }
-            else
-            {
-                pop(value, head->right);
-            }
-        }
-        */
-    }
-
-
-    int main(int argc, const char* argv[])
-    {
-
-        return 0;
-    }
