@@ -40,7 +40,7 @@ bool Node::add(int val)
         }
         else
         {
-            return right->add(value);
+            return right->add(val);
         }
     }
     
@@ -123,9 +123,9 @@ Node* Node::remove(int val, Node* parent)
             return this;
         }
     }
-
-
-
+    
+    //Should not happen
+    return NULL;
 }
 
 int Node::minValue()
@@ -183,7 +183,6 @@ bool BinaryTree::insert(int value)
         if( root->add(value))
         {
             size++;
-            cout << "Added Node: " << value << endl;
             return true;
         }
         else
