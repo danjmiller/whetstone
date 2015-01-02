@@ -7,11 +7,13 @@ enable_testing()
 set(LIB_SRC 
   src/LinkedList.cpp
   src/binaryTree.cpp
+  src/StringUtils.cpp
 )
 
 set(TEST_SRC
   src/test_LinkedList.cpp
   src/test_BinaryTree.cpp
+  src/test_StringUtils.cpp
 )
 
 #App Stuff
