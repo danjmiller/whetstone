@@ -8,6 +8,7 @@ set(LIB_SRC
   src/LinkedList.cpp
   src/binaryTree.cpp
   src/StringUtils.cpp
+  src/Graph.cpp
 )
 
 set(TEST_SRC
