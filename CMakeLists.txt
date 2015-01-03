@@ -15,6 +15,7 @@ set(TEST_SRC
   src/test_LinkedList.cpp
   src/test_BinaryTree.cpp
   src/test_StringUtils.cpp
+  src/test_Graph.cpp
 )
 
 #App Stuff
