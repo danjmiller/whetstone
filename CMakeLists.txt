@@ -9,6 +9,7 @@ set(LIB_SRC
   src/binaryTree.cpp
   src/StringUtils.cpp
   src/BitTools.cpp
+  src/Graph.cpp
 )
 
 set(TEST_SRC
@@ -16,6 +17,7 @@ set(TEST_SRC
   src/test_BinaryTree.cpp
   src/test_StringUtils.cpp
   src/test_BitTools.cpp
+  src/test_Graph.cpp
 )
 
 #App Stuff
