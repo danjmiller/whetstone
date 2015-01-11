@@ -8,12 +8,14 @@ set(LIB_SRC
   src/LinkedList.cpp
   src/binaryTree.cpp
   src/StringUtils.cpp
+  src/BitTools.cpp
 )
 
 set(TEST_SRC
   src/test_LinkedList.cpp
   src/test_BinaryTree.cpp
   src/test_StringUtils.cpp
+  src/test_BitTools.cpp
 )
 
 #App Stuff
