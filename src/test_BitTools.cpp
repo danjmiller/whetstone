@@ -33,3 +33,15 @@ TEST(TestBitTools, TestPretty)
 
 
 }
+
+
+TEST(TestBitTools, TestSwap)
+{
+    BitTools bt;
+
+    short val = bt.swapEvenOdd((short)2);
+    std::string val_str = bt.printBinary(val, true);
+    EXPECT_STREQ("00000000 00000001", val_str.c_str());
+
+
+}
